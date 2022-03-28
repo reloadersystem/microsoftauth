@@ -135,27 +135,10 @@ extension ViewController {
 
 // MARK: Shared device
 
-extension ViewController {
+
     
-    @objc func getDeviceMode(_ sender: UIButton) {
-        
-        if #available(iOS 13.0, *) {
-            self.applicationContext?.getDeviceInformation(with: nil, completionBlock: { (deviceInformation, error) in
-                
-                guard let deviceInfo = deviceInformation else {
-                    self.updateLogging(text: "Device info not returned. Error: \(String(describing: error))")
-                    return
-                }
-                
-                let isSharedDevice = deviceInfo.deviceMode == .shared
-                let modeString = isSharedDevice ? "shared" : "private"
-                self.updateLogging(text: "Received device info. Device is in the \(modeString) mode.")
-            })
-        } else {
-            self.updateLogging(text: "Running on older iOS. GetDeviceInformation API is unavailable.")
-        }
-    }
-}
+    
+    
 
 
 // MARK: Acquiring and using token
@@ -382,7 +365,7 @@ extension ViewController {
                     return
                 }
                 
-                self.updateLogging(text: "Cierre de sesión exitoso")
+                self.updateLogging(text: "Sign out completed successfully")
                 self.accessToken = ""
                 self.updateCurrentAccount(account: nil)
             })
@@ -413,7 +396,7 @@ extension ViewController {
         // Add call Graph button
         callGraphButton  = UIButton()
         callGraphButton.translatesAutoresizingMaskIntoConstraints = false
-        callGraphButton.setTitle("Iniciar Sesión", for: .normal)
+            callGraphButton.setTitle("Iniciar Sesión", for: .normal)
         callGraphButton.setTitleColor(.blue, for: .normal)
         callGraphButton.addTarget(self, action: #selector(callGraphAPI(_:)), for: .touchUpInside)
         self.view.addSubview(callGraphButton)
@@ -437,17 +420,17 @@ extension ViewController {
         signOutButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         signOutButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         
-        let deviceModeButton = UIButton()
-        deviceModeButton.translatesAutoresizingMaskIntoConstraints = false
-        deviceModeButton.setTitle("Ver información", for: .normal);
-        deviceModeButton.setTitleColor(.blue, for: .normal);
-        deviceModeButton.addTarget(self, action: #selector(getDeviceMode(_:)), for: .touchUpInside)
-        self.view.addSubview(deviceModeButton)
-        
-        deviceModeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        deviceModeButton.topAnchor.constraint(equalTo: signOutButton.bottomAnchor, constant: 10.0).isActive = true
-        deviceModeButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
-        deviceModeButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+//        let deviceModeButton = UIButton()
+//        deviceModeButton.translatesAutoresizingMaskIntoConstraints = false
+//        deviceModeButton.setTitle("Ver información", for: .normal);
+//        deviceModeButton.setTitleColor(.blue, for: .normal);
+//        //deviceModeButton.addTarget(self, action: #selector(getDeviceMode(_:)), for: .touchUpInside)
+//        self.view.addSubview(deviceModeButton)
+//
+//        deviceModeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        deviceModeButton.topAnchor.constraint(equalTo: signOutButton.bottomAnchor, constant: 10.0).isActive = true
+//        deviceModeButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
+//        deviceModeButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         
         // Add logging textfield
         loggingText = UITextView()
@@ -456,7 +439,7 @@ extension ViewController {
         
         self.view.addSubview(loggingText)
         
-        loggingText.topAnchor.constraint(equalTo: deviceModeButton.bottomAnchor, constant: 10.0).isActive = true
+        loggingText.topAnchor.constraint(equalTo: signOutButton.bottomAnchor, constant: 10.0).isActive = true
         loggingText.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10.0).isActive = true
         loggingText.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10.0).isActive = true
         loggingText.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 10.0).isActive = true
@@ -486,7 +469,7 @@ extension ViewController {
     func updateAccountLabel() {
         
         guard let currentAccount = self.currentAccount else {
-            self.usernameLabel.text = "Cerrar Sesión"
+            self.usernameLabel.text = "Signed out"
             return
         }
         
