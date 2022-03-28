@@ -382,7 +382,7 @@ extension ViewController {
                     return
                 }
                 
-                self.updateLogging(text: "Sign out completed successfully")
+                self.updateLogging(text: "Cierre de sesión exitoso")
                 self.accessToken = ""
                 self.updateCurrentAccount(account: nil)
             })
@@ -413,7 +413,7 @@ extension ViewController {
         // Add call Graph button
         callGraphButton  = UIButton()
         callGraphButton.translatesAutoresizingMaskIntoConstraints = false
-            callGraphButton.setTitle("Iniciar Sesión", for: .normal)
+        callGraphButton.setTitle("Iniciar Sesión", for: .normal)
         callGraphButton.setTitleColor(.blue, for: .normal)
         callGraphButton.addTarget(self, action: #selector(callGraphAPI(_:)), for: .touchUpInside)
         self.view.addSubview(callGraphButton)
@@ -439,7 +439,7 @@ extension ViewController {
         
         let deviceModeButton = UIButton()
         deviceModeButton.translatesAutoresizingMaskIntoConstraints = false
-        deviceModeButton.setTitle("Get device info", for: .normal);
+        deviceModeButton.setTitle("Ver información", for: .normal);
         deviceModeButton.setTitleColor(.blue, for: .normal);
         deviceModeButton.addTarget(self, action: #selector(getDeviceMode(_:)), for: .touchUpInside)
         self.view.addSubview(deviceModeButton)
@@ -486,7 +486,7 @@ extension ViewController {
     func updateAccountLabel() {
         
         guard let currentAccount = self.currentAccount else {
-            self.usernameLabel.text = "Signed out"
+            self.usernameLabel.text = "Cerrar Sesión"
             return
         }
         
