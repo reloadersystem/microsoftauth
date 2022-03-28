@@ -413,7 +413,7 @@ extension ViewController {
         // Add call Graph button
         callGraphButton  = UIButton()
         callGraphButton.translatesAutoresizingMaskIntoConstraints = false
-        callGraphButton.setTitle("Call Microsoft Graph API", for: .normal)
+            callGraphButton.setTitle("Iniciar Sesión", for: .normal)
         callGraphButton.setTitleColor(.blue, for: .normal)
         callGraphButton.addTarget(self, action: #selector(callGraphAPI(_:)), for: .touchUpInside)
         self.view.addSubview(callGraphButton)
@@ -426,7 +426,7 @@ extension ViewController {
         // Add sign out button
         signOutButton = UIButton()
         signOutButton.translatesAutoresizingMaskIntoConstraints = false
-        signOutButton.setTitle("Sign Out", for: .normal)
+        signOutButton.setTitle("Cerrar Sesión", for: .normal)
         signOutButton.setTitleColor(.blue, for: .normal)
         signOutButton.setTitleColor(.gray, for: .disabled)
         signOutButton.addTarget(self, action: #selector(signOut(_:)), for: .touchUpInside)
